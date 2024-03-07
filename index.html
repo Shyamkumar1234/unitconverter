@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator using html css js</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        #convert {
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            
+            border-radius: 20px;
+            
+            margin-top: 150px;
+            transition: all 1s;
+
+        }
+        body{
+            background-color: rgb(45, 3, 85);
+        }
+        #convert:hover{
+            background-color: darkmagenta;
+            padding: 15px;
+           
+        }
+        table{
+            text-align: center;
+            height: 200px;
+            width: 40%;
+            background-color: yellow;
+            margin: auto;
+            margin-top: 50px;
+            border-radius: 0px 0px 20px 20px;
+        }
+        table tr td{
+            margin: 20px;
+        }
+        #input{
+            width: 150px;
+            height: 30px;
+            border-radius: 5px;
+        }
+        #output{
+            width: 150px;
+            height: 30px;
+            border-radius: 5px;
+        }
+        #unit1{
+            width: 130px;
+            height: 20px;
+            border-radius: 5px;
+        }
+        #unit2{
+            width: 130px;
+            height: 20px;
+            border-radius: 5px;
+        }
+        caption{
+            font-size: 30px;
+            font-weight: bold;
+            background-color: red;
+            color: white;
+            border-radius: 20px 20px 0px 0px;
+        }
+        #result{
+            font-size: 30px;
+           
+            height: 90px;
+            background-color: greenyellow;
+          
+        }
+        .copyrite{
+            color: gray;
+            font-size: 10px;
+        }
+        #result_dir{
+            width: 100px;
+            height: 70px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <!-- <img src="C:\Users\sharm\OneDrive\Documents\development\images\image-2.jpg" alt=""> -->
+    
+    <table>
+        <caption>Smart Converter</caption>
+        <tr>
+            <th>
+                <select name="unit1" id="unit1">
+                    <option>Select unit</option>
+                    <option id="mb1" value="mb">MB</option>
+                    <option id="kb1" value="kb">KB</option>
+                    <option id="gb1" value="gb">GB</option>
+                    <option id="bit1" value="bit">bit</option>
+                    <option id="byte1" value="bit">Byte</option>
+                </select>
+            </th>
+            <th rowspan="3">
+
+
+                <img id="result_dir" src="https://i.ibb.co/svDhxrB/Pngtree-red-arrow-to-the-right-8382726.png" alt=" arrow ">
+            </th>
+            <th>
+                <select name="unit2" id="unit2">
+                    <option>Select unit</option>
+                    <option id="mb2" value="mb">MB</option>
+                    <option id="kb2" value="kb">KB</option>
+                    <option id="gb2" value="gb">GB</option>
+                    <option id="bit2" value="bit">bit</option>
+                    <option id="byte2" value="byte">Byte</option>
+                </select>
+            </th>
+
+            
+        </tr>
+        <tr>
+            <td>
+                <input type="number" id="input" placeholder="Enter number" autofocus>
+            </td>           
+            <th id="result">               
+            </th>
+        </tr>
+        
+        
+        <tr>
+            <td colspan="2">
+                <a href="#" class="common" id="convert" onclick="converting()">Convert</a>
+            </td>
+        </tr>
+        <tr>
+            <td class="copyrite" colspan="2">Copyrite&copy;2023 Created by Shyam Kumar sharma</td>
+        </tr>
+    </table>
+
+
+   
+<script src="converter.js"></script>
+
+<script>
+    // for input
+var mb1 = document.querySelector('#mb1').value;
+var kb1 = document.querySelector('#kb1').value;
+var gb1 = document.querySelector('#gb1').value;
+var bit1 = document.querySelector('#bit1').value;
+var byte1 = document.querySelector('#byte1').value;
+// fo output
+var mb2 = document.querySelector('#mb2').value;
+var kb2 = document.querySelector('#kb2').value;
+var gb2 = document.querySelector('#gb2').value;
+var bit2 = document.querySelector('#bit2').value;
+var byte2 = document.querySelector('#byte2').value;
+// for entered data
+var entered_data = document.querySelector('#input').value;
+var selected_data1= document.querySelector('#unit1').value;
+var selected_data2= document.querySelector('#unit2').value;
+
+function converting(){
+   
+    var entered_data = document.querySelector('#input').value;
+    var selected_data1= document.querySelector('#unit1').value;
+    var selected_data2= document.querySelector('#unit2').value;
+    if(selected_data1 ==mb1 && selected_data2==mb2){
+        document.getElementById('result').innerHTML = entered_data + ' MB';
+    }else if(selected_data1==mb1 && selected_data2==kb2){
+        document.querySelector('#result').innerHTML = entered_data*1024 + ' KB';
+    }else if(selected_data1==mb1 && selected_data2==gb2){
+        document.querySelector('#result').innerHTML = entered_data/1024 + ' GB';
+    }else if(selected_data1==mb1 && selected_data2==bit2){
+        document.querySelector('#result').innerHTML = entered_data*8000000 + ' bit';
+    }else if(selected_data1==mb1 && selected_data2==byte2){
+        document.querySelector('#result').innerHTML = entered_data*1000000 + ' Byte';
+    }//this is in input only for mb1
+    else if(selected_data1==kb1 && selected_data2==mb2){
+        document.querySelector('#result').innerHTML = entered_data/1024 + ' MB';
+    }else if(selected_data1==kb1 && selected_data2==kb2){
+        document.querySelector('#result').innerHTML = entered_data + ' KB';
+    }else if(selected_data1==kb1 && selected_data2==gb2){
+        document.querySelector('#result').innerHTML = entered_data/1048576 + ' GB';
+    }else if(selected_data1==kb1 && selected_data2==bit2){
+        document.querySelector('#result').innerHTML = entered_data*8000 + ' bit';
+    }else if(selected_data1==kb1 && selected_data2==byte2){
+        document.querySelector('#result').innerHTML = entered_data*1024 + ' Byte';
+    } //this is in input only for kb1
+    else if(selected_data1==gb1 && selected_data2==mb2){
+        document.querySelector('#result').innerHTML = entered_data*1024 + ' MB';
+    }else if(selected_data1==gb1 && selected_data2==kb2){
+        document.querySelector('#result').innerHTML = entered_data*1024*1024 + ' KB';
+    }else if(selected_data1==gb1 && selected_data2==gb2){
+        document.querySelector('#result').innerHTML = entered_data + ' GB';
+    }else if(selected_data1==gb1 && selected_data2==bit2){
+        document.querySelector('#result').innerHTML = entered_data*8000000000 + ' bit';
+    }else if(selected_data1==gb1 && selected_data2==byte2){
+        document.querySelector('#result').innerHTML = entered_data*1024*1024*1024 + ' Byte';
+    }// this is in input only for gb1
+    else if(selected_data1==bit1 && selected_data2==mb2){
+        document.querySelector('#result').innerHTML = (entered_data*1.25)/10000000 + ' MB';
+    }else if(selected_data1==bit1 && selected_data2==kb2){
+        document.querySelector('#result').innerHTML = entered_data*0.000125 + ' KB';
+    }else if(selected_data1==bit1 && selected_data2==gb2){
+        document.querySelector('#result').innerHTML = (entered_data*1.25)/10000000000 + ' GB';
+    }else if(selected_data1==bit1 && selected_data2==bit2){
+        document.querySelector('#result').innerHTML = entered_data + ' bit';
+    }else if(selected_data1==bit1 && selected_data2==byte2){
+        document.querySelector('#result').innerHTML = entered_data/8 + ' Byte';
+    }//this is in input only for bit1
+    else if(selected_data1==byte1 && selected_data2==mb2){
+        document.querySelector('#result').innerHTML = entered_data/(1024*1024) + ' MB';
+    }else if(selected_data1==byte1 && selected_data2==kb2){
+        document.querySelector('#result').innerHTML = entered_data/1024 + ' KB';
+    }
+    else if(selected_data1==byte1 && selected_data2==gb2){
+        document.querySelector('#result').innerHTML = entered_data/(1024*1024*1024) + ' GB';
+    }
+    else if(selected_data1==byte1 && selected_data2==bit2){
+        document.querySelector('#result').innerHTML = ((entered_data)*(8)) + ' bit';
+    }
+    else if(selected_data1==byte1 && selected_data2==byte2){
+        document.querySelector('#result').innerHTML = entered_data + ' Byte';
+    }
+
+
+}
+</script>
+</body>
+
+</html>
